@@ -1,0 +1,35 @@
+<ba-card title="{{ day?.label }}" baCardClass="with-scroll feed-panel" *ngFor="let day of listDays">
+  <div class="sh-container">
+    <span *ngFor="let laboratory of listLaboratories">
+      <div class="sh-laboratory-header" title="{{ laboratory?.name }}">
+          {{ laboratory?.name | limitTo: 32 }}
+      </div>
+
+      <span *ngFor="let hour of listHours">
+        <div class="sh-laboratory-container">
+          <div class="sh-hours-container">
+            {{ hour?.label }}
+          </div>
+  
+          <span *ngFor="let schedule of listSchedules">
+            <span *ngIf="day?._id === schedule?.day?._id && laboratory?._id === schedule?.laboratory_id?._id && hour?._id == schedule?.hour?._id">
+              <div class="sh-shedule-container">
+                <div class="sh-shedule-subject" title="{{ schedule?.subject?.name }}">
+                    {{ schedule?.subject?.name | limitTo: 24 }}
+                </div>
+
+                <div class="sh-shedule-teacher" title="{{ schedule?.teacher?.user_id?.full_names }}">
+                    {{ schedule?.teacher?.user_id?.full_names | limitTo: 24 }}
+                </div>
+
+                <div class="sh-shedule-career" title="{{ schedule?.career?.name }}">
+                    {{ schedule?.career?.name | limitTo: 24 }}
+                </div>
+              </div>
+            </span>
+          </span>
+        </div>
+      </span>
+    </span>
+  </div>
+</ba-card>

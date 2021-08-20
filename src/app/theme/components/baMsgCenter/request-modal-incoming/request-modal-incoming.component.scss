@@ -1,0 +1,14 @@
+@import '../../../sass/conf/conf.scss';
+
+div.modal-content {
+    background: $sidebar;
+    color: $label-text;
+}
+
+div.modal-content > div.modal-header > button.close > span {
+    color: $label-text;
+}
+
+hr {
+    background: $label-text;
+}

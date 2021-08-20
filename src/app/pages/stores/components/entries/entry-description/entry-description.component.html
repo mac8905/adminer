@@ -1,0 +1,42 @@
+<div [formGroup]="entryDescriptionForm">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="group">Grupo</label>
+        <input type="text" class="form-control" id="group" formControlName="group">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="unity">Unidad</label>
+        <input type="text" class="form-control" id="unity" formControlName="unity">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="quantity">Cantidad</label>
+        <input type="text" class="form-control" id="quantity" formControlName="quantity">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="description">Descripción del equipo, material e insumo</label>
+        <input type="text" class="form-control" id="description" formControlName="description">
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="location_id">Ubicación donde se almacena</label>
+        <select class="form-control" id="location_id" formControlName="location_id">
+            <option *ngFor="let item of metrics" [value]="item._id">{{ item.name }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>

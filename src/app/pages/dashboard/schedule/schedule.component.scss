@@ -1,0 +1,59 @@
+@import "../../../theme/sass/conf/conf";
+
+div.sh-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 0.8em;
+    height: 100%;
+}
+
+    div.sh-laboratory-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5em;
+        margin: 0.5em;
+        background: $sidebar;
+        font-weight: bold;
+    }
+
+    div.sh-laboratory-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.2em;
+        height: 55px;
+    }
+
+        div.sh-hours-container {
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+        }
+
+        div.sh-shedule-container {
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+            div.sh-shedule-subject {
+                background: $success-dark;
+                width: 100%;
+            }
+
+            div.sh-shedule-teacher {
+                background: $danger-dark;
+                width: 100%;
+            }
+
+            div.sh-shedule-career {
+                background: $primary-dark;
+                width: 100%;
+            }

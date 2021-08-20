@@ -1,0 +1,29 @@
+<ul class="al-msg-center clearfix">
+  <li class="dropdown">
+    <a href class="dropdown-toggle" id="msg-dd1" data-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-bell-o"></i><span>{{ notifications.length }}</span>
+
+      <div class="notification-ring"></div>
+    </a>
+
+    <div class="top-dropdown-menu dropdown-menu" aria-labelledby="msg-dd1">
+      <i class="dropdown-arr"></i>
+
+      <div class="header clearfix">
+        <strong>Solicitudes entrantes</strong>
+      </div>
+
+      <div class="msg-list">
+        <a *ngFor="let msg of notifications" (click)="requestIncoming(msg.data)" class="clearfix">
+          <div class="msg-area">
+            <div class="title">{{ msg.name }}</div>
+            <div>{{ msg.text }}</div>
+            <span>{{ msg.time }}</span>
+          </div>
+        </a>
+      </div>
+      
+      <a href>Ver todas las solicitudes</a>
+    </div>
+  </li>
+</ul>

@@ -1,0 +1,187 @@
+<div class="modal-content">
+    <form novalidate [formGroup]="form" (ngSubmit)="onSubmit(form)">
+      <div class="modal-header">
+        <h4 class="modal-title">{{modalHeader}}</h4>
+  
+        <button class="close" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  
+      <hr>
+  
+      <div class="modal-body">
+        <h5 class="modal-title">SOLICITUD PRÉSTAMO</h5><hr>
+  
+        <div formGroupName="requests_id">
+          <div formGroupName="user_id">
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label for="username">Código</label>
+                  <input type="text" class="form-control" id="username" formControlName="username" readonly>
+                </div>
+              </div>
+  
+              <div class="col-sm-5">
+                <div class="form-group">
+                  <label for="full_names">Nombre</label>
+                  <input type="text" class="form-control" id="full_names" formControlName="full_names" readonly>
+                </div>
+              </div>
+  
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="email">Correo</label>
+                  <input type="text" class="form-control" id="email" formControlName="email" readonly>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label for="date_request">Fecha solicitud</label>
+                <input type="text" class="form-control" id="date_request" formControlName="date_request" readonly>
+              </div>
+            </div>
+  
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label for="hour">Hora</label>
+                <input type="text" class="form-control" id="hour" formControlName="hour" readonly>
+              </div>
+            </div>
+  
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="laboratory_id">Laboratorio</label>
+                <input type="text" class="form-control" id="laboratory_id" formControlName="laboratory_id" readonly>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="practice_type">Tipo práctica</label>
+                <input type="text" class="form-control" id="practice_type" formControlName="practice_type" readonly>
+              </div>
+            </div>
+  
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="practice_guided">Práctica guiada</label>
+                <input type="text" class="form-control" id="practice_guided" formControlName="practice_guided" readonly>
+              </div>
+            </div>
+  
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="practice_name">Nombre práctica</label>
+                <input type="text" class="form-control" id="practice_name" formControlName="practice_name" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="university">Universidad</label>
+              <input type="text" class="form-control" id="university" formControlName="university" readonly>
+            </div>
+          </div>
+  
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="subject_id">Materia</label>
+              <select class="form-control" id="subject_id" formControlName="subject_id" disabled>
+                <option *ngFor="let item of listSubjects" [value]="item?._id">{{ item?.name }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+  
+        <br><h5 class="modal-title">SOLICITUD MATERIALES</h5><hr>
+  
+        <div formArrayName="users">
+          <div *ngFor="let item of form.controls.users.controls; let i=index">
+            <div [formGroupName]="i">
+              <h5 class="modal-title">Participante {{i + 1}}</h5>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label for="username">Código</label>
+                    <input type="text" class="form-control" id="username" formControlName="username" readonly>
+                  </div>
+                </div>
+    
+                <div class="col-sm-5">
+                  <div class="form-group">
+                    <label for="full_names">Nombre</label>
+                    <input type="text" class="form-control" id="full_names" formControlName="full_names" readonly>
+                  </div>
+                </div>
+    
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label for="career">Carrera</label>
+                    <input type="text" class="form-control" id="career" formControlName="career" readonly>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="mobile">Móvil</label>
+                    <input type="text" class="form-control" id="mobile" formControlName="mobile" readonly>
+                  </div>
+                </div>
+  
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="email">Correo</label>
+                    <input type="text" class="form-control" id="email" formControlName="email" readonly>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <br><h5 class="modal-title">Materiales, equipos e insumos</h5>
+        
+        <div formArrayName="equipment">
+          <div *ngFor="let item of form.controls.equipment.controls; let i=index">
+            <div [formGroupName]="i">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="equipment" formControlName="equipment" readonly>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="observation">Observaciones</label>
+              <textarea class="form-control" id="observation" formControlName="observation" rows="2"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary confirm-btn" [disabled]="form.invalid">En proceso</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">Cancelar</button>
+      </div>
+    </form>
+  </div>

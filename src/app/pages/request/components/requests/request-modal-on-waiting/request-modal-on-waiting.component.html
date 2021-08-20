@@ -1,0 +1,75 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title">{{ modalHeader + data?.data?.consecutive }}</h4>
+
+    <button class="close" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+
+  <hr>
+
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <span class="text-primary">Usuario: </span>
+          {{ data?.data?.user_id?.full_names }}
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="form-group">
+          <span class="text-primary">Día: </span>
+          {{ data?.data?.day?.label }}
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="form-group">
+          <span class="text-primary">Hora: </span>
+          {{ data?.data?.hour?.label }}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <span class="text-primary">Laboratorio: </span>
+          {{ data?.data?.laboratory_id?.name }}
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <span class="text-primary">Práctica: </span>
+          {{ data?.data?.practice_type?.name + " - " + data?.data?.practice_guided?.name }}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <span class="text-primary">Observaciones: </span>
+          {{ data?.data?.observations }}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <span class="text-primary">Solicitud recibida por: </span>
+          {{ data?.data?.user_receives?.full_names }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary confirm-btn" data-dismiss="modal" (click)="approved()">Aprovado</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="notapproved()">No aprovado</button>
+  </div>
+</div>

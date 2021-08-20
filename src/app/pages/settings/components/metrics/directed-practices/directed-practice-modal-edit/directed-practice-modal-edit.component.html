@@ -1,0 +1,58 @@
+<div class="modal-content">
+  <form [formGroup]="formDirectedPractice" novalidate (ngSubmit)="onSubmit(formDirectedPractice)">
+    <div class="modal-header">
+      <h4 class="modal-title">{{modalHeader}}</h4>
+
+      <button class="close" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <hr>
+
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="name">* NOMBRE</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="career">* CARRERA</label>
+            <select class="form-control" id="career" formControlName="career">
+              <option *ngFor="let item of listCareers" [value]="item._id">{{ item.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="practical_type">* TIPO DE PRÁCTICA</label>
+            <select class="form-control" id="practical_type" formControlName="practical_type">
+              <option *ngFor="let item of listPracticalTypes" [value]="item._id">{{ item.name }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="description">DESCRIPCIÓN</label>
+            <textarea class="form-control" id="description" formControlName="description"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary confirm-btn" [disabled]="formDirectedPractice.invalid">Confirmar</button>
+      <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">Cancelar</button>
+    </div>
+  </form>
+</div>

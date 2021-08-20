@@ -1,0 +1,155 @@
+<div class="modal-content">
+  <form novalidate [formGroup]="formProvider" (ngSubmit)="onSubmit(formProvider)">
+    <div class="modal-header">
+      <h4 class="modal-title">{{modalHeader}}</h4>
+
+      <button class="close" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <hr>
+
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="name">* NOMBRE PROVEEDOR</label>
+            <input type="text" class="form-control" id="name" formControlName="name" autofocus>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="supply">BIEN O SERVICIO SUMINISTRADO</label>
+            <input type="text" class="form-control" id="supply" formControlName="supply">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="importance">* IMPORTANCIA [CRÍTICO, NO CRÍTICO]</label>
+            <input type="text" class="form-control" id="importance" formControlName="importance">
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <h5 class="modal-title">INFORMACIÓN DE CONTACTO</h5>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="city">CIUDAD</label>
+            <input type="text" class="form-control" id="city" formControlName="city" placeholder="Ej: Bogotá">
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="address">DIRECCIÓN</label>
+            <input type="text" class="form-control" id="address" formControlName="address" placeholder="Ej: carrera 7 # 25 - 45">
+          </div>
+        </div>
+      </div>
+
+      <div class="row" formGroupName="phone">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="mobile">MÓVIL</label>
+            <input type="text" class="form-control" id="mobile" formControlName="mobile">
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="fixed">FIJO</label>
+            <input type="text" class="form-control" id="fixed" formControlName="fixed">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="email">* CORREO</label>
+            <input type="text" class="form-control" id="email" formControlName="email" placeholder="Ej: ejemplo@yopmail.com">
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="status">ESTADO ACTUAL</label>
+            <input type="text" class="form-control" id="status" formControlName="status">
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <h5 class="modal-title">SELECCIÓN PROVEEDOR</h5>
+
+      <hr>
+
+      <div formGroupName="selection">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="date">FECHA Y HORA</label>
+
+              <div class="input-group">
+                <input class="form-control" id="date" formControlName="date" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="date" ngbDatepicker
+                  #d="ngbDatepicker">
+
+                <div class="input-group-addon" (click)="d.toggle()" style="cursor: pointer;">
+                  <i class="ion-calendar" style="width: 1.5rem; margin-top: -5px;"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <ngb-timepicker id="hour" formControlName="time" [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="value_r">RESULTADO (VALOR)</label>
+              <input type="text" class="form-control" id="value_r" formControlName="value_r">
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="criterion_r">RESULTADO (CRITERIO)</label>
+              <input type="text" class="form-control" id="criterion_r" formControlName="criterion_r">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="observation">OBSERVACIONES</label>
+              <input type="text" class="form-control" id="observation" formControlName="observation">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary confirm-btn" [disabled]="formProvider.invalid">Confirmar</button>
+      <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">Cancelar</button>
+    </div>
+  </form>
+</div>

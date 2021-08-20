@@ -1,0 +1,7 @@
+@import "../../../../theme/sass/conf/conf";
+
+:host /deep/ .widgets {
+  .smart-table-container {
+    width: 100%;
+  }
+}

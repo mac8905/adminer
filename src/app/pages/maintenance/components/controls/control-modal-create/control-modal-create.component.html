@@ -1,0 +1,77 @@
+<div class="modal-content">
+  <form novalidate [formGroup]="form" (ngSubmit)="onSubmit(form)">
+    <div class="modal-header">
+      <h4 class="modal-title">{{modalHeader}}</h4>
+
+      <button class="close" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <hr>
+
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="date">Fecha</label>
+
+            <div class="input-group">
+              <input class="form-control" id="date" formControlName="date" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="date" ngbDatepicker
+                #d="ngbDatepicker">
+
+              <div class="input-group-addon" (click)="d.toggle()" style="cursor: pointer;">
+                <i class="ion-calendar" style="width: 1.5rem; margin-top: -5px;"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <ngb-timepicker id="hour" formControlName="time" [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="stocks_id">Equipo</label>
+            <select class="form-control" id="stocks_id" formControlName="stocks_id">
+                <option *ngFor="let item of listStocks" [value]="item._id">{{ item.equipment }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="check_id">Tipo de control</label>
+            <select class="form-control" id="check_id" formControlName="check_id">
+              <option *ngFor="let item of listControlConstants" [value]="item._id">{{ item.label }}</option>
+          </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="user_id">Registrado por</label>
+            <select class="form-control" id="user_id" formControlName="user_id">
+                <option *ngFor="let item of listUsers" [value]="item._id">{{ item.full_names }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary confirm-btn" [disabled]="form.invalid">Confirmar</button>
+      <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">Cancelar</button>
+    </div>
+  </form>
+</div>

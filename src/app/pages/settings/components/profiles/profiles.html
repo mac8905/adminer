@@ -1,0 +1,11 @@
+<div class="widgets">
+    <div class="row">
+      <nga-smart-tables
+        [settings]="settings"
+        [source]="source"
+        (create)="onCreate($event)"
+        (edit)="onSave($event)"
+        (delete)="onDelete($event)">
+      </nga-smart-tables>
+    </div>
+  </div>

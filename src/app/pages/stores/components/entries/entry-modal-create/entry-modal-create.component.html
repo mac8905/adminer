@@ -1,0 +1,123 @@
+<div class="modal-content">
+  <form novalidate [formGroup]="formEntry" (ngSubmit)="onSubmit(formEntry)">
+    <div class="modal-header">
+      <h4 class="modal-title">{{modalHeader}}</h4>
+
+      <button class="close" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <hr>
+
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="date">Fecha de entrada</label>
+
+            <div class="input-group">
+              <input class="form-control" id="date" formControlName="date" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="date" ngbDatepicker
+                #d="ngbDatepicker">
+
+              <div class="input-group-addon" (click)="d.toggle()" style="cursor: pointer;">
+                <i class="ion-calendar" style="width: 1.5rem; margin-top: -5px;"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <ngb-timepicker id="hour" formControlName="time" [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="username">Nombre del laboratorista que recibe</label>
+            <select class="form-control" id="username" formControlName="username">
+                <option *ngFor="let item of laboratorists" [value]="item._id">{{ item.full_names }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="per_delivery">Nombre de quien entrega material</label>
+            <input type="text" class="form-control" id="per_delivery" formControlName="per_delivery">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="entry">Entrada</label>
+            <input type="text" class="form-control" id="entry" formControlName="entry">
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="contract">Tipo de contrato</label>
+            <input type="text" class="form-control" id="contract" formControlName="contract">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="provider_id">Proveedor</label>
+            <select class="form-control" id="provider_id" formControlName="provider_id">
+                <option *ngFor="let item of providers" [value]="item._id">{{ item.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="invoice">* N° de factura</label>
+            <input type="text" class="form-control" id="invoice" formControlName="invoice">
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <h5 class="modal-title">DESCRIPCIÓN DE LA ENTRADA</h5>
+
+      <hr>
+
+      <div formArrayName="description">
+        <div *ngFor="let description of getDescriptions(formEntry); let i=index" class="panel panel-default">
+          <div class="panel-heading">
+            <span>Descripción {{i + 1}}</span>
+
+            <span class="ion-minus-circled" *ngIf="formEntry.controls.description.controls.length > 1" (click)="removeDescription(i)">
+            </span>
+          </div>
+
+          <div class="panel-body" [formGroupName]="i">
+            <nga-app-entry-description [group]="formEntry.controls.description.controls[i]">
+            </nga-app-entry-description>
+          </div>
+        </div>
+      </div>
+
+      <div class="">
+        <a (click)="addDescription()" style="cursor: default">
+            Agregar otra descripción <i class="ion-plus-circled"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary confirm-btn" [disabled]="formEntry.invalid">Confirmar</button>
+      <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">Cancelar</button>
+    </div>
+  </form>
+</div>

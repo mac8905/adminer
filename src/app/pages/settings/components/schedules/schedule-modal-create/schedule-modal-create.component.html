@@ -1,0 +1,100 @@
+<div class="modal-content">
+  <form [formGroup]="formSchedule" novalidate (ngSubmit)="onSubmit(formSchedule)">
+    <div class="modal-header">
+      <h4 class="modal-title">{{modalHeader}}</h4>
+
+      <button class="close" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <hr>
+
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="year">* AÑO</label>
+            <select class="form-control" id="year" formControlName="year">
+              <option *ngFor="let item of listYears" [value]="item._id">{{ item.label }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="semester">* SEMESTRE</label>
+            <select class="form-control" id="semester" formControlName="semester">
+              <option *ngFor="let item of listSemesters" [value]="item._id">{{ item.label }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="day">* DÍA</label>
+            <select class="form-control" id="day" formControlName="day">
+              <option *ngFor="let item of listDays" [value]="item._id">{{ item.label }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="hour">* HORA</label>
+            <select class="form-control" id="hour" formControlName="hour">
+              <option *ngFor="let item of listHours" [value]="item._id">{{ item.label }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="laboratory_id">* LABORATORIO</label>
+            <select class="form-control" id="laboratory_id" formControlName="laboratory_id">
+              <option *ngFor="let item of listLaboratories" [value]="item._id">{{ item.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="career">* CARRERA</label>
+            <select class="form-control" id="career" formControlName="career" (ngModelChange)="setListTeachers($event)">
+              <option *ngFor="let item of listCareers" [value]="item._id">{{ item.name }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="teacher">* DOCENTE</label>
+            <select class="form-control" id="teacher" formControlName="teacher" (ngModelChange)="setListSubjects($event)">
+              <option *ngFor="let item of listTeachers" [value]="item._id">{{ item?.user_id?.full_names }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="subject">* MATERIA</label>
+            <select class="form-control" id="subject" formControlName="subject">
+              <option *ngFor="let item of listSubjects" [value]="item._id">{{ item?.name }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary confirm-btn" [disabled]="formSchedule.invalid">Confirmar</button>
+      <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">Cancelar</button>
+    </div>
+  </form>
+</div>

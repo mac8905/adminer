@@ -1,0 +1,94 @@
+<div class="modal-content">
+    <form [formGroup]="formTeacher" novalidate (ngSubmit)="onSubmit(formTeacher)">
+      <div class="modal-header">
+        <h4 class="modal-title">{{modalHeader}}</h4>
+  
+        <button class="close" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  
+      <hr>
+  
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="user_id">* USUARIO</label>
+              <input type="hidden" formControlName="user_id">
+              <select class="form-control" id="user_id" formControlName="user_id" disabled>
+                <option *ngFor="let item of listUsers" [value]="item?._id">{{ item?.full_names }}</option>
+              </select>
+            </div>
+          </div>
+  
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="career_id">* CARRERA</label>
+              <select class="form-control" id="career_id" formControlName="career_id" (ngModelChange)="setListSubjects($event)">
+                <option *ngFor="let item of listCareers" [value]="item?._id">{{ item?.name }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="subject_id">* MATERIA</label>
+              <select multiple class="form-control" id="subject_id" formControlName="subject_id">
+                <option *ngFor="let item of listSubjects" [value]="item?._id">{{ item?.name }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="date">* FECHA ADMISIÓN</label>
+  
+              <div class="input-group">
+                <input class="form-control" id="date" formControlName="date" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="date" ngbDatepicker
+                  #d="ngbDatepicker">
+  
+                <div class="input-group-addon" (click)="d.toggle()" style="cursor: pointer;">
+                  <i class="ion-calendar" style="width: 1.5rem; margin-top: -5px;"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-sm-6">
+            <div class="form-group">
+              <ngb-timepicker id="hour" formControlName="time" [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
+            </div>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="semester_admission">* SEMESTRE ADMISIÓN</label>
+              <select class="form-control" id="semester_admission" formControlName="semester_admission">
+                  <option *ngFor="let item of listSemesters" [value]="item?._id">{{ item?.label }}</option>
+                </select>
+            </div>
+          </div>
+  
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="status">* ESTADO</label>
+              <br>
+              <switch [status]="status" [onText]="onText" [offText]="offText" [onColor]="onColor" [offColor]="offColor" [size]="size" (statusChange)="onChange()"></switch>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary confirm-btn" [disabled]="formTeacher.invalid">Confirmar</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">Cancelar</button>
+      </div>
+    </form>
+  </div>

@@ -1,0 +1,194 @@
+<div class="modal-content">
+  <form novalidate [formGroup]="formStock" (ngSubmit)="onSubmit(formStock)">
+    <div class="modal-header">
+      <h4 class="modal-title">{{modalHeader}}</h4>
+
+      <button class="close" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <hr>
+
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="entry_id">N° de factura</label>
+            <select class="form-control" id="entry_id" formControlName="entry_id" (ngModelChange)="setListProducts($event)">
+              <option *ngFor="let item of listEntries" [value]="item._id">{{ item.invoice }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="entry_val">[ Cantidad ] - Recurso a registrar</label>
+            <select class="form-control" id="entry_val" formControlName="entry_val">
+              <option *ngFor="let item of listProducts" [value]="item.key">{{ "[ " + item.value + " ] - " + item.name }}</option> 
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="code">Cod.</label>
+            <input type="text" class="form-control" id="code" formControlName="code">
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="succession"># Serie</label>
+            <input type="text" class="form-control" id="succession" formControlName="succession">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="trademark">Marca</label>
+            <input type="text" class="form-control" id="trademark" formControlName="trademark">
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="equipment">Equipo</label>
+            <input type="text" class="form-control" id="equipment" formControlName="equipment">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="model">Modelo</label>
+            <input type="text" class="form-control" id="model" formControlName="model">
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="state">Estado de adquisición</label>
+            <input type="text" class="form-control" id="state" formControlName="state">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="laboratory_id">Laboratorio</label>
+            <select class="form-control" id="laboratory_id" formControlName="laboratory_id">
+              <option *ngFor="let item of listLaboratories" [value]="item._id">{{ item.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="location_id">Ubicación</label>
+            <select class="form-control" id="location_id" formControlName="location_id">
+              <option *ngFor="let item of listLocations" [value]="item._id">{{ item.name }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="handbook">Manual del equipo</label>
+            <input type="text" class="form-control" id="handbook" formControlName="handbook">
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="status">Estado</label>
+            <select class="form-control" id="status" formControlName="status">
+              <option *ngFor="let item of listStatus" [value]="item._id">{{ item.label }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="photo">Foto</label>
+            <input type="text" class="form-control" id="photo" formControlName="photo"> 
+          </div>
+          <!-- <ba-card title="Foto" baCardClass="with-scroll">
+            <ba-picture-uploader [picture]="picture" [defaultPicture]="defaultPicture" [uploaderOptions]="uploaderOptions"></ba-picture-uploader>
+          </ba-card> -->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="description">Descripción</label>
+            <textarea class="form-control" id="description" formControlName="description"></textarea>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="observations">Observaciones</label>
+            <textarea class="form-control" id="observations" formControlName="observations"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <h5 class="modal-title">CARACTERÍSTICAS</h5>
+
+      <hr>
+
+      <div formGroupName="characteristics">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="power">Poder</label>
+              <input type="text" class="form-control" id="power" formControlName="power">
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="voltage">Voltaje</label>
+              <input type="text" class="form-control" id="voltage" formControlName="voltage">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="kw">Kilovatios</label>
+              <input type="text" class="form-control" id="kw" formControlName="kw">
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="amperage">Amperaje</label>
+              <input type="text" class="form-control" id="amperage" formControlName="amperage">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary confirm-btn" [disabled]="formStock.invalid">Confirmar</button>
+      <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">Cancelar</button>
+    </div>
+  </form>
+</div>

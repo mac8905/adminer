@@ -1,0 +1,13 @@
+<div class="widgets">
+
+  <div class="row">
+    <nga-smart-tables
+      [settings]="settings"
+      [source]="source"
+      (emitCreateConfirm)="onConfirmCreate($event)"
+      (emitDeleteConfirm)="onConfirmDelete($event)"
+      (emitEditConfirm)="onConfirmEdit($event)">
+    </nga-smart-tables>
+  </div>
+
+</div>

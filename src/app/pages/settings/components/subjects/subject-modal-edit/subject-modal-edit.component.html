@@ -1,0 +1,64 @@
+<div class="modal-content">
+    <form [formGroup]="formSubject" novalidate (ngSubmit)="onSubmit(formSubject)">
+      <div class="modal-header">
+        <h4 class="modal-title">{{modalHeader}}</h4>
+  
+        <button class="close" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  
+      <hr>
+  
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="code">* CÓDIGO</label>
+              <input type="text" class="form-control" id="code" formControlName="code">
+            </div>
+          </div>
+  
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="name">* NOMBRE</label>
+              <input type="text" class="form-control" id="name" formControlName="name">
+            </div>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="career">* CARRERA</label>
+              <select multiple class="form-control" id="career" formControlName="career">
+                <option *ngFor="let item of listCareers" [value]="item._id">{{ item.name }}</option>
+              </select>
+            </div>
+          </div>
+  
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="status">* ESTADO</label>
+              <br>
+              <switch [status]="status" [onText]="onText" [offText]="offText" [onColor]="onColor" [offColor]="offColor" [size]="size" (statusChange)="onChange()"></switch>
+            </div>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="description">DESCRIPCIÓN</label>
+              <textarea class="form-control" id="description" formControlName="description"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary confirm-btn" [disabled]="formSubject.invalid">Confirmar</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">Cancelar</button>
+      </div>
+    </form>
+  </div>

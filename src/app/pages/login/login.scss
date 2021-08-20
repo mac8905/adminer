@@ -1,0 +1,20 @@
+@import '../../theme/sass/auth';
+
+img.img_ud {
+    width: 140px;    
+}
+
+img.img_lb {
+    width: 80px;
+}
+
+div.img-container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 146px;
+    justify-content: space-evenly;
+    position: absolute;
+    width: 32%;
+    margin-top: -178px;
+}
